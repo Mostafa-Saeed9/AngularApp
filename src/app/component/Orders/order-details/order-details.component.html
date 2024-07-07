@@ -1,0 +1,17 @@
+<p>order-details works!</p>
+<div>
+  <select class="form-select mt-2" name="cat" id="prodCat" aria-label="Default select example"
+    [(ngModel)]="SelectedCatId">
+
+    <option value="0" disabled selected>Select Category</option>
+    <!-- <option *ngFor="let cat of categoryList" [value]="cat.id">{{cat.name}}</option> -->
+    <option *ngFor="let cat of categoryList" [value]="cat.id">
+      {{cat.name}}</option>
+  </select>
+</div>
+<hr>
+<div >
+  <app-product-lists [recivedCatID]="SelectedCatId" (totalPriceCalc)="onClickPuyOrder ($event)"></app-product-lists>
+</div>
+<hr>
+<h3>order totalPrice :{{recievOrderTotalPrice}} </h3>

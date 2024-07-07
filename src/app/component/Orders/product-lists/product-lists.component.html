@@ -1,0 +1,41 @@
+
+<div>
+  Selected Id :{{SelectedCatId}}
+</div>
+
+<hr>
+<table class="table">
+  <thead class="bg-dark text-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Image</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <ng-container *ngFor="let prod of productCatList"> -->
+      <tr ng-container *ngFor="let prod of productCatList">
+        <td>{{prod.id}}</td>
+        <td>{{prod.name}}</td>
+        <td>{{prod.price | currency :'EG'}}</td>
+        <td><img LightBox defaultColor="red" [src]="prod.imageUrl" alt=""> </td>
+        <ng-container>
+          <div [ngSwitch]="prod.quantity">
+            <div *ngSwitchCase="0">solled all item</div>
+            <div *ngSwitchCase="1">last item</div>
+            <div *ngSwitchDefault="">{{prod.quantity}}</div>
+          </div>
+        </ng-container>
+        <td><input #itemCount type="number" class="form-control"></td>
+        <td><button type="button" class="btn-primary" (click)="buyProduct(prod.price,itemCount.value)">Buy</button></td>
+      </tr>
+    <!-- </ng-container> -->
+  </tbody>
+</table>
+
+<hr>
+<!-- <h3>Total Price = {{totalPrice}}</h3> -->
