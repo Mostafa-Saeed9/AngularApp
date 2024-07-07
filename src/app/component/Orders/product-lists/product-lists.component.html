@@ -12,6 +12,7 @@
       <th scope="col">Price</th>
       <th scope="col">Image</th>
       <th scope="col">Quantity</th>
+      <th scope="col">Details</th>
       <th scope="col">Action</th>
 
     </tr>
@@ -31,6 +32,8 @@
           </div>
         </ng-container>
         <td><input #itemCount type="number" class="form-control"></td>
+        <!-- <td><button #itemCount type="number" (click)="openProdDetils(prod.id)" class="btn-primary">details </button></td> -->
+        <td><a class="btn btn-success" href="#" [routerLink]="['/Products',prod.id]" role="button">Details</a></td>
         <td><button type="button" class="btn-primary" (click)="buyProduct(prod.price,itemCount.value)">Buy</button></td>
       </tr>
     <!-- </ng-container> -->
