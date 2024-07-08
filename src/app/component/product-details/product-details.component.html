@@ -1,1 +1,30 @@
-<p>product-details works!</p>
+<!-- <div class="card m-2" style="width: 30px;">
+  <img class="card-img-top" [src]="product?.imageUrl" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product?.name}}<Title></Title></h5>
+    <div class="card-text">
+      <div>{{product?.price}}</div>
+      <div>{{product?.quantity}}</div>
+    </div>
+    <a class="btn btn-primary">Go additional details</a>
+  </div>
+
+</div> -->
+
+<div class="card" style="width: 18rem;">
+  <img [src]="product?.imageUrl" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Product Name : {{product?.name}}</h5>
+    <div class="card-text">
+      <div> Price : {{product?.price}}</div>
+      <div>Quantity : {{product?.quantity}}</div>
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <button [disabled]="recievedProdId==productListIds[0]" (click)="prevProduct()" type="button" class="btn btn-danger">previous</button>
+      <button (click)="goBack()" type="button" class="btn btn-warning">Go Back</button>
+      <button [disabled]="recievedProdId==productListIds.length-1" (click)="nextProduct()" type="button" class="btn btn-success">next</button>
+    </div>
+    <!-- <button (click)="goBack()" class="btn btn-primary">Go Back</button> -->
+
+  </div>
+</div>

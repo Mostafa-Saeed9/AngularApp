@@ -35,5 +35,8 @@ export class StaticProductListService {
     return foundedProduct? foundedProduct : null
 
   }
-
+  getProductsIds(): number [] {
+    let prodIDs :number [] = this.productList.map(prod => prod.id);
+    return prodIDs;
+}
 }
