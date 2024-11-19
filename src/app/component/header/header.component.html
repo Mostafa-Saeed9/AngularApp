@@ -19,7 +19,10 @@
           <a class="nav-link" routerLinkActive="active" routerLink="Order">Orders</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="Login">Login</a>
+          <a [hidden]="isUSerLogged" class="nav-link" routerLinkActive="active" routerLink="Login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a [hidden]="!isUSerLogged" class="nav-link" routerLinkActive="active" routerLink="Logout">Logout</a>
         </li>
       </ul>
     </div>

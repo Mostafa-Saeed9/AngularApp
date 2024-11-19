@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { PromotionAdsServicService } from 'src/app/Services/promotion-ads-servic.service';
 import { StoreData } from 'src/app/ViewModel/store-data';
 
@@ -7,13 +8,22 @@ import { StoreData } from 'src/app/ViewModel/store-data';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit ,OnDestroy {
 
+  private subscriptions : Subscription[]=[];
   storeInfo : StoreData;
   isImageVisible:boolean=true;
   constructor(private promoAds : PromotionAdsServicService){
     this.storeInfo= new StoreData('Shopping Store','https://picsum.photos/400/200',['fayoum','cairo','giza'])
   }
+  ngOnDestroy(): void {
+   for(let sub of this.subscriptions){
+    sub.unsubscribe();
+    console.log("unSubscribe")
+   }
+
+  }
+
   ngOnInit(): void {
     let observer = {
       next:(data:string)=>{
@@ -29,7 +39,7 @@ export class HomeComponent implements OnInit {
     };
 
 
-    this.promoAds.getScheduleAds(3).subscribe({
+    let addSubscription:Subscription= this.promoAds.getScheduleAds(3).subscribe({
       next:(data:string)=>{
       console.log(data)
     },
@@ -41,6 +51,7 @@ export class HomeComponent implements OnInit {
     }
 
   });
+  this.subscriptions.push(addSubscription)
 
 
 }

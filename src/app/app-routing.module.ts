@@ -16,6 +16,7 @@ const routes: Routes = [
     {path : 'Order' , component:OrderDetailsComponent}
   ]},
   {path : 'Login',component:UserLoginComponent},
+  {path : 'Logout',component:UserLoginComponent},
   {path : '**' ,component:HomeComponent}
 
 ];
