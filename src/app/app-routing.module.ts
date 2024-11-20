@@ -6,6 +6,7 @@ import { OrderDetailsComponent } from './component/Orders/order-details/order-de
 import { UserLoginComponent } from './component/userLogin/userLogin.component';
 import { MainLayoutComponent } from './component/mainLayout/mainLayout.component';
 import { ProductDetailsComponent } from './component/product-details/product-details.component';
+import { authGuard } from './component/Guards/auth.guard';
 
 const routes: Routes = [
   {path : '' ,component:MainLayoutComponent,children:[
@@ -13,7 +14,7 @@ const routes: Routes = [
     {path : 'Home', component:HomeComponent},
     {path : 'Products',component:ProductListsComponent},
     {path : 'Products/:pid',component:ProductDetailsComponent},
-    {path : 'Order' , component:OrderDetailsComponent}
+    {path : 'Order' , component:OrderDetailsComponent,canActivate:[authGuard]}
   ]},
   {path : 'Login',component:UserLoginComponent},
   {path : 'Logout',component:UserLoginComponent},

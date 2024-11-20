@@ -9,7 +9,7 @@ export class UserAuthService {
   private isLoggedSubj:BehaviorSubject<boolean>;
 
   constructor() {
-    this.isLoggedSubj = new BehaviorSubject<boolean> (false)
+    this.isLoggedSubj = new BehaviorSubject<boolean> (this.isUserLogged)
    }
 
   login(userName: string,passord :string){
